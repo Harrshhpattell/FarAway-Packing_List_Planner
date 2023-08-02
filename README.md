@@ -1,5 +1,5 @@
 # Packing List Planner    
-The Packing List Planner is a React-based web application that allows users to create a list of items they need to pack for their upcoming trips. Whether it's a weekend getaway or a long vacation, this app helps users stay organized by providing a simple and efficient way to manage their packing list.     
+The Packing List Planner is a **React**-based web application that allows users to create a list of items they need to pack for their upcoming trips. Whether it's a weekend getaway or a long vacation, this app helps users stay organized by providing a simple and efficient way to manage their packing list.     
 
 ## Features    
 + **Add Items to Packing List:** Users can easily add items they need to pack for their trip. They can specify the item name, quantity, and any additional notes related to that item.
