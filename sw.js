@@ -31,16 +31,25 @@ this.addEventListener("install", (event) => {
   );
 });
 
-// offline (fetch from cache)
+// // offline (fetch from cache)
+// this.addEventListener("fetch", (event) => {
+//   // check internet connection
+//   if (!navigator.onLine) {
+//     event.respondWith(
+//       caches.match(event.request).then((resp) => {
+//         if (resp) {
+//           return resp;
+//         }
+//       })
+//     );
+//   }
+// });
+
 this.addEventListener("fetch", (event) => {
-  // check internet connection
-  if (!navigator.onLine) {
-    event.respondWith(
-      caches.match(event.request).then((resp) => {
-        if (resp) {
-          return resp;
-        }
-      })
-    );
-  }
+  // Check if the request failed or network is offline
+  event.respondWith(
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
+    })
+  );
 });
