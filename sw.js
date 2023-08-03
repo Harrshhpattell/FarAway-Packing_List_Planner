@@ -5,14 +5,23 @@ let cacheData = "appV1";
 this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheData).then((cache) => {
+      // cache.addAll([
+      //   "/FarAway-Packing_List_Planner/static/js/bundle.js",
+      //   "/FarAway-Packing_List_Planner/manifest.json",
+      //   "/FarAway-Packing_List_Planner/index.html",
+      //   "/FarAway-Packing_List_Planner/icons/icon-512.png",
+      //   "/FarAway-Packing_List_Planner/icons/icon-1024.png",
+      //   "/FarAway-Packing_List_Planner/ws",
+      //   "/FarAway-Packing_List_Planner/",
+      // ]);
       cache.addAll([
-        "/FarAway-Packing_List_Planner/static/js/bundle.js",
-        "/FarAway-Packing_List_Planner/manifest.json",
-        "/FarAway-Packing_List_Planner/index.html",
-        "/FarAway-Packing_List_Planner/icons/icon-512.png",
-        "/FarAway-Packing_List_Planner/icons/icon-1024.png",
-        "/FarAway-Packing_List_Planner/ws",
-        "/FarAway-Packing_List_Planner/",
+        "static/js/bundle.js",
+        "manifest.json",
+        "index.html",
+        "icons/icon-512.png",
+        "icons/icon-1024.png",
+        "ws",
+        "/",
       ]);
     })
   );
