@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FarAway-Packing_List_Planner/static/css/main.825a3e8f.css",
+    "main.js": "/FarAway-Packing_List_Planner/static/js/main.eecaa923.js",
+    "index.html": "/FarAway-Packing_List_Planner/index.html",
+    "main.825a3e8f.css.map": "/FarAway-Packing_List_Planner/static/css/main.825a3e8f.css.map",
+    "main.eecaa923.js.map": "/FarAway-Packing_List_Planner/static/js/main.eecaa923.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.825a3e8f.css",
+    "static/js/main.eecaa923.js"
+  ]
+}
