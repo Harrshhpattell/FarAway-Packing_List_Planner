@@ -14,15 +14,19 @@ this.addEventListener("install", (event) => {
       //   "/FarAway-Packing_List_Planner/ws",
       //   "/FarAway-Packing_List_Planner/",
       // ]);
-      cache.addAll([
-        "/static/js/bundle.js",
-        "/manifest.json",
-        "/index.html",
-        "/icons/icon-512.png",
-        "/icons/icon-1024.png",
-        "/ws",
-        "/",
-      ]);
+      cache
+        .addAll([
+          "/static/js/bundle.js",
+          "/manifest.json",
+          "/index.html",
+          "/icons/icon-512.png",
+          "/icons/icon-1024.png",
+          "/ws",
+          "/",
+        ])
+        .catch((error) => {
+          console.error("Cache.addAll error:", error);
+        });
     })
   );
 });
