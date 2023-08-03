@@ -1,55 +1,59 @@
 let cacheData = "appV1";
 
-// to store in cache
-
+// To store in cache during installation
 this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheData).then((cache) => {
-      // cache.addAll([
-      //   "/FarAway-Packing_List_Planner/static/js/bundle.js",
-      //   "/FarAway-Packing_List_Planner/manifest.json",
-      //   "/FarAway-Packing_List_Planner/index.html",
-      //   "/FarAway-Packing_List_Planner/icons/icon-512.png",
-      //   "/FarAway-Packing_List_Planner/icons/icon-1024.png",
-      //   "/FarAway-Packing_List_Planner/ws",
-      //   "/FarAway-Packing_List_Planner/",
-      // ]);
-      cache
-        .addAll([
-          "/static/js/bundle.js",
-          "/manifest.json",
-          "/index.html",
-          "/icons/icon-512.png",
-          "/icons/icon-1024.png",
-          "/ws",
-          "/",
-        ])
-        .catch((error) => {
-          console.error("Cache.addAll error:", error);
-        });
+      return cache.addAll([
+        "/static/js/bundle.js",
+        "/manifest.json",
+        "/index.html",
+        "/icons/icon-512.png",
+        "/icons/icon-1024.png",
+        "/ws",
+        "/", // This is the root URL, adjust it as needed
+      ]);
     })
   );
 });
 
-// // offline (fetch from cache)
-// this.addEventListener("fetch", (event) => {
-//   // check internet connection
-//   if (!navigator.onLine) {
-//     event.respondWith(
-//       caches.match(event.request).then((resp) => {
-//         if (resp) {
-//           return resp;
-//         }
-//       })
-//     );
-//   }
-// });
-
+// Fetch event for offline support
 this.addEventListener("fetch", (event) => {
-  // Check if the request failed or network is offline
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request);
+  // Check internet connection
+  if (!navigator.onLine) {
+    event.respondWith(
+      caches.match(event.request).then((resp) => {
+        if (resp) {
+          return resp;
+        }
+      })
+    );
+  } else {
+    // If online, update cache with the latest version from the server
+    event.respondWith(
+      caches.open(cacheData).then((cache) => {
+        return fetch(event.request).then((response) => {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      })
+    );
+  }
+});
+
+// Activate event to handle service worker updates
+this.addEventListener("activate", (event) => {
+  const cacheWhitelist = [cacheData];
+
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
