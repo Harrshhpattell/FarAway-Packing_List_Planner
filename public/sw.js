@@ -7,7 +7,6 @@ this.addEventListener("install", (event) => {
     caches.open(cacheData).then((cache) => {
       cache.addAll([
         "/static/js/bundle.js",
-        "/favicon.ico",
         "/manifest.json",
         "/index.html",
         "/ws",
