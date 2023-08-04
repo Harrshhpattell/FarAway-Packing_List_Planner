@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/FarAway-Packing_List_Planner/static/css/main.825a3e8f.css",
+    "main.css": "/FarAway-Packing_List_Planner/static/css/main.ad98bc8e.css",
     "main.js": "/FarAway-Packing_List_Planner/static/js/main.2d95461e.js",
     "index.html": "/FarAway-Packing_List_Planner/index.html",
-    "main.825a3e8f.css.map": "/FarAway-Packing_List_Planner/static/css/main.825a3e8f.css.map",
+    "main.ad98bc8e.css.map": "/FarAway-Packing_List_Planner/static/css/main.ad98bc8e.css.map",
     "main.2d95461e.js.map": "/FarAway-Packing_List_Planner/static/js/main.2d95461e.js.map"
   },
   "entrypoints": [
-    "static/css/main.825a3e8f.css",
+    "static/css/main.ad98bc8e.css",
     "static/js/main.2d95461e.js"
   ]
 }
