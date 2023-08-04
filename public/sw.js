@@ -6,13 +6,12 @@ this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheData).then((cache) => {
       cache.addAll([
-        "/FarAway-Packing_List_Planner/static/js/bundle.js",
-        "/FarAway-Packing_List_Planner/manifest.json",
-        "/FarAway-Packing_List_Planner/index.html",
-        "/FarAway-Packing_List_Planner/icons/icon-512.png",
-        "/FarAway-Packing_List_Planner/icons/icon-1024.png",
-        "/FarAway-Packing_List_Planner/ws",
-        "/FarAway-Packing_List_Planner/",
+        "/static/js/bundle.js",
+        "/favicon.ico",
+        "/manifest.json",
+        "/index.html",
+        "/ws",
+        "/",
       ]);
     })
   );
