@@ -13,6 +13,7 @@ this.addEventListener("install", (event) => {
         "/manifest.json",
         "/index.html",
         "/ws",
+        "/swDev.js",
         "/",
       ]);
     })
