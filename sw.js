@@ -36,26 +36,14 @@ var cacheData = "appV1";
 // Install event: Cache initial assets
 self.addEventListener("install", function (event) {
   event.waitUntil(
-<<<<<<< HEAD
-    caches.open(cacheData).then((cache) => {
-      cache.addAll([
-        "/static/js/bundle.js",
-        "/favicon.ico",
-        "/static/js/main.chunk.js",
-        "/static/js/0.chunk.js",
-        "/manifest.json",
-        "/index.html",
-        "/ws",
-        "/swDev.js",
-=======
     caches.open(cacheData).then(function (cache) {
       return cache.addAll([
         "/static/js/bundle.js",
         "/favicon.ico",
         "/manifest.json",
+
         "/index.html",
         "/ws",
->>>>>>> main
         "/",
       ]);
     })
