@@ -1,5 +1,4 @@
 {
-  "homepage": "https://Harrshhpattell.github.io/FarAway-Packing_List_Planner",
   "name": "travel-list",
   "version": "0.1.0",
   "private": true,
@@ -24,7 +23,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-restricted-globals": [
+        "error",
+        {
+          "name": "addEventListener",
+          "message": "Use of 'addEventListener' is allowed in service workers."
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
