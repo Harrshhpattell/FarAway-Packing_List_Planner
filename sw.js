@@ -33,7 +33,6 @@
 
 var cacheData = "appV1";
 
-// Install event: Cache initial assets
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(cacheData).then(function (cache) {
@@ -41,7 +40,6 @@ self.addEventListener("install", function (event) {
         "/static/js/bundle.js",
         "/favicon.ico",
         "/manifest.json",
-
         "/index.html",
         "/ws",
         "/",
@@ -50,34 +48,31 @@ self.addEventListener("install", function (event) {
   );
 });
 
-// Fetch event: Handle network requests
 self.addEventListener("fetch", function (event) {
-  // Check if the request is in the cache
   event.respondWith(
-    caches.match(event.request).then(function (resp) {
-      if (resp) {
-        return resp; // Return cached response if available
+    caches.match(event.request).then(function (cachedResponse) {
+      // Return cached response if available
+      if (cachedResponse) {
+        return cachedResponse;
       }
 
       // If not in cache, fetch the request
-      return fetch(event.request).then(function (networkResp) {
+      return fetch(event.request).then(function (networkResponse) {
         // Cache the fetched response for future use
         return caches.open(cacheData).then(function (cache) {
-          cache.put(event.request, networkResp.clone());
-          return networkResp;
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
         });
       });
     })
   );
-});
 
-// Offline event: Handle offline requests
-self.addEventListener("fetch", function (event) {
+  // Offline event: Handle offline requests
   if (!navigator.onLine) {
     event.respondWith(
-      caches.match(event.request).then(function (resp) {
-        if (resp) {
-          return resp; // Respond with cached data if available
+      caches.match(event.request).then(function (cachedResponse) {
+        if (cachedResponse) {
+          return cachedResponse; // Respond with cached data if available
         }
       })
     );
