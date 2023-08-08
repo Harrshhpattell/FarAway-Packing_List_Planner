@@ -39,8 +39,8 @@ self.addEventListener("install", function (event) {
       return cache.addAll([
         "/static/js/bundle.js",
         "/favicon.ico",
-        "/manifest.json",
-        "/index.html",
+        "manifest.json",
+        "index.html",
         "/ws",
         "/",
       ]);
